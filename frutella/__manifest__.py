@@ -1,0 +1,23 @@
+{
+    'name': 'Frutella Delights',
+    'version': '17.0.1.0.0',
+    'summary': 'Manejo de frutella de materias primas, producción y ventas',
+    'author': 'Tu Nombre',
+    'category': 'Inventory',
+    'depends': ['base', 'stock', 'mrp', 'mail'],
+    'data': [
+        'security/ir.model.access.csv',
+        'data/mail_template.xml',
+        'data/cron.xml',
+        'data/productos_ingredientes.xml',
+        'data/productos_terminados.xml',
+        'data/listas_materiales.xml',
+        'views/product_views.xml',
+        'views/sale_views.xml',
+        'views/sale_report.xml',
+        'views/menu.xml',
+    ],
+    'installable': True,
+    'application': True,
+    'license': 'LGPL-3',
+}

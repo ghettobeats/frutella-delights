@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Lista -->
+    <record id="view_ms_sale_tree" model="ir.ui.view">
+        <field name="name">ms.sale.tree</field>
+        <field name="model">ms.sale</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state == 'draft'"
+                  decoration-success="profit > 0 and state == 'done'"
+                  decoration-danger="profit &lt; 0 and state == 'done'">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="total"/>
+                <field name="total_cost"/>
+                <field name="profit"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Formulario -->
+    <record id="view_ms_sale_form" model="ir.ui.view">
+        <field name="name">ms.sale.form</field>
+        <field name="model">ms.sale</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm"
+                            string="Confirmar Venta"
+                            type="object"
+                            class="btn-primary"
+                             invisible="state == 'done'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Productos Vendidos">
+                            <field name="sale_line_ids">
+                                <tree editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                    <field name="price" readonly="1"/>
+                                    <field name="cost_unit"/>
+                                    <field name="subtotal" readonly="1"/>
+                                    <field name="cost" readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <group class="oe_subtotal_footer">
+                        <field name="total_cost" readonly="1"/>
+                        <field name="total" readonly="1"/>
+                        <field name="profit" readonly="1"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista Pivot -->
+    <record id="view_ms_sale_pivot" model="ir.ui.view">
+        <field name="name">ms.sale.pivot</field>
+        <field name="model">ms.sale</field>
+        <field name="arch" type="xml">
+            <pivot string="Análisis de Ventas">
+                <field name="date" type="row"/>
+                <field name="total" type="measure"/>
+                <field name="total_cost" type="measure"/>
+                <field name="profit" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Vista Gráfico -->
+    <record id="view_ms_sale_graph" model="ir.ui.view">
+        <field name="name">ms.sale.graph</field>
+        <field name="model">ms.sale</field>
+        <field name="arch" type="xml">
+            <graph string="Ventas y Ganancias" type="bar">
+                <field name="date" type="row"/>
+                <field name="profit" type="measure"/>
+                <field name="total" type="measure"/>
+                <field name="total_cost" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Acción (consolidada con pivot y graph) -->
+    <record id="action_ms_sale" model="ir.actions.act_window">
+        <field name="name">Ventas</field>
+        <field name="res_model">ms.sale</field>
+        <field name="view_mode">tree,form,pivot,graph</field>
+    </record>
+</odoo>

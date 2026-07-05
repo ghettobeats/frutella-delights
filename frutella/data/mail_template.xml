@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Plantilla: Stock Bajo -->
+    <record id="mail_template_low_stock" model="mail.template">
+        <field name="name">Alerta de Stock Bajo</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="subject">Stock Bajo: {{ object.name }}</field>
+        <field name="body_html"><![CDATA[
+            <div style="font-family: 'Segoe UI', -apple-system, sans-serif; max-width: 500px; margin: 0 auto; background-color: #ffffff;">
+                <!-- Header minimalista -->
+                <div style="background-color: #ff8c00; padding: 30px 20px; text-align: left;">
+                    <h2 style="color: white; margin: 0; font-size: 18px; font-weight: 600;">Frutella-Delight</h2>
+                </div>
+
+                <!-- Contenido principal -->
+                <div style="padding: 30px 20px; background-color: #ffffff;">
+                    <h3 style="color: #333; font-size: 16px; font-weight: 600; margin: 0 0 15px 0;">Stock Bajo</h3>
+
+                    <p style="color: #666; font-size: 14px; line-height: 1.6; margin: 0 0 25px 0;">
+                        El producto tiene stock por debajo del mínimo.
+                    </p>
+
+                    <!-- Información del producto - minimalista -->
+                    <div style="background-color: #fafafa; padding: 20px; border-left: 3px solid #ff8c00;">
+                        <div style="margin-bottom: 15px;">
+                            <p style="color: #999; font-size: 12px; text-transform: uppercase; margin: 0 0 5px 0;">Producto</p>
+                            <p style="color: #333; font-size: 15px; font-weight: 600; margin: 0;">{{ object.name }}</p>
+                        </div>
+
+                        <div style="display: inline-block; width: 48%; margin-right: 4%;">
+                            <p style="color: #999; font-size: 12px; text-transform: uppercase; margin: 0 0 5px 0;">Stock Actual</p>
+                            <p style="color: #ff8c00; font-size: 18px; font-weight: 700; margin: 0;">{{ object.qty_available }}</p>
+                        </div>
+
+                        <div style="display: inline-block; width: 48%;">
+                            <p style="color: #999; font-size: 12px; text-transform: uppercase; margin: 0 0 5px 0;">Stock Mínimo</p>
+                            <p style="color: #333; font-size: 18px; font-weight: 700; margin: 0;">{{ object.min_stock }}</p>
+                        </div>
+                    </div>
+
+                    <p style="color: #666; font-size: 14px; margin: 25px 0 0 0; line-height: 1.6;">
+                        Reponga este producto a la brevedad.
+                    </p>
+                </div>
+
+                <!-- Footer minimalista -->
+                <div style="background-color: #fafafa; padding: 15px 20px; text-align: center; border-top: 1px solid #eee;">
+                    <p style="color: #999; font-size: 12px; margin: 0;">Alerta automática del Sistema de Inventario</p>
+                </div>
+            </div>
+        ]]></field>
+    </record>
+
+    <!-- Plantilla: Pérdida en Venta -->
+    <record id="mail_template_sale_loss" model="mail.template">
+        <field name="name">Alerta de Pérdida en Venta</field>
+        <field name="model_id" ref="frutella.model_ms_sale"/>
+        <field name="subject">Venta con Pérdida: {{ object.name }}</field>
+        <field name="body_html"><![CDATA[
+            <div style="font-family: 'Segoe UI', -apple-system, sans-serif; max-width: 500px; margin: 0 auto; background-color: #ffffff;">
+                <!-- Header minimalista -->
+                <div style="background-color: #ff8c00; padding: 30px 20px; text-align: left;">
+                    <h2 style="color: white; margin: 0; font-size: 18px; font-weight: 600;">Frutella-Delight</h2>
+                </div>
+
+                <!-- Contenido principal -->
+                <div style="padding: 30px 20px; background-color: #ffffff;">
+                    <h3 style="color: #333; font-size: 16px; font-weight: 600; margin: 0 0 15px 0;">Venta con Pérdida</h3>
+
+                    <p style="color: #666; font-size: 14px; line-height: 1.6; margin: 0 0 25px 0;">
+                        Se detectó una venta que generó pérdida.
+                    </p>
+
+                    <!-- Información de la venta - minimalista -->
+                    <div style="background-color: #fafafa; padding: 20px; border-left: 3px solid #ff8c00;">
+                        <div style="margin-bottom: 15px;">
+                            <p style="color: #999; font-size: 12px; text-transform: uppercase; margin: 0 0 5px 0;">Referencia</p>
+                            <p style="color: #333; font-size: 15px; font-weight: 600; margin: 0;">{{ object.name }}</p>
+                        </div>
+
+                        <div style="margin-bottom: 15px;">
+                            <p style="color: #999; font-size: 12px; text-transform: uppercase; margin: 0 0 5px 0;">Fecha</p>
+                            <p style="color: #333; font-size: 14px; margin: 0;">{{ object.date }}</p>
+                        </div>
+
+                        <div style="display: inline-block; width: 48%; margin-right: 4%; margin-bottom: 15px;">
+                            <p style="color: #999; font-size: 12px; text-transform: uppercase; margin: 0 0 5px 0;">Total Venta</p>
+                            <p style="color: #333; font-size: 16px; font-weight: 600; margin: 0;">{{ object.total }}</p>
+                        </div>
+
+                        <div style="display: inline-block; width: 48%; margin-bottom: 15px;">
+                            <p style="color: #999; font-size: 12px; text-transform: uppercase; margin: 0 0 5px 0;">Costo</p>
+                            <p style="color: #333; font-size: 16px; font-weight: 600; margin: 0;">{{ object.total_cost }}</p>
+                        </div>
+
+                        <div style="border-top: 1px solid #ddd; padding-top: 15px;">
+                            <p style="color: #999; font-size: 12px; text-transform: uppercase; margin: 0 0 5px 0;">Pérdida</p>
+                            <p style="color: #d32f2f; font-size: 20px; font-weight: 700; margin: 0;">{{ object.profit }}</p>
+                        </div>
+                    </div>
+
+                    <p style="color: #666; font-size: 14px; margin: 25px 0 0 0; line-height: 1.6;">
+                        Revise los costos de producción y precios de venta.
+                    </p>
+                </div>
+
+                <!-- Footer minimalista -->
+                <div style="background-color: #fafafa; padding: 15px 20px; text-align: center; border-top: 1px solid #eee;">
+                    <p style="color: #999; font-size: 12px; margin: 0;">Alerta automática del Sistema de Inventario</p>
+                </div>
+            </div>
+        ]]></field>
+    </record>
+
+</odoo>

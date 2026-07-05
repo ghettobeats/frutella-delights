@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Categoría de productos terminados -->
+        <record id="product_category_helados" model="product.category">
+            <field name="name">Helados</field>
+        </record>
+
+        <!-- Helado de Coco -->
+        <record id="product_tmpl_helado_leche_coco" model="product.template">
+            <field name="name">Helado de Coco</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_helados"/>
+            <field name="list_price">60.00</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">False</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+        <!-- Helado de Dulce de Leche -->
+        <record id="product_tmpl_helado_dulce_leche" model="product.template">
+            <field name="name">Helado de Dulce de Leche</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_helados"/>
+            <field name="list_price">60.00</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">False</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+        <!-- Helado de Fresa -->
+        <record id="product_tmpl_helado_fresa" model="product.template">
+            <field name="name">Helado de Fresa</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_helados"/>
+            <field name="list_price">50.00</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">False</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+        <!-- Helado de Vainilla -->
+        <record id="product_tmpl_helado_vainilla" model="product.template">
+            <field name="name">Helado de Vainilla</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_helados"/>
+            <field name="list_price">60.00</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">False</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+        <!-- Helado de Chinola -->
+        <record id="product_tmpl_helado_chinola" model="product.template">
+            <field name="name">Helado de Chinola</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_helados"/>
+            <field name="list_price">60.00</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">False</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+        <!-- Base para Helado -->
+        <record id="product_tmpl_base_helado" model="product.template">
+            <field name="name">Base para Helado</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_ingredientes"/>
+            <field name="standard_price">0.00</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">False</field>
+            <field name="uom_id" ref="uom.product_uom_litre"/>
+            <field name="uom_po_id" ref="uom.product_uom_litre"/>
+        </record>
+
+    </data>
+</odoo>

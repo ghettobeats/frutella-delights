@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Categoría de ingredientes -->
+        <record id="product_category_ingredientes" model="product.category">
+            <field name="name">Ingredientes</field>
+        </record>
+
+        <!-- Crema -->
+        <record id="product_tmpl_crema" model="product.template">
+            <field name="name">Crema</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_ingredientes"/>
+            <field name="standard_price">240.92</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">True</field>
+            <field name="uom_id" ref="uom.product_uom_lb"/>
+            <field name="uom_po_id" ref="uom.product_uom_lb"/>
+        </record>
+
+        <!-- Leche en Polvo -->
+        <record id="product_tmpl_leche_polvo" model="product.template">
+            <field name="name">Leche en Polvo</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_ingredientes"/>
+            <field name="standard_price">350.00</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">True</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+        <!-- Agua -->
+        <record id="product_tmpl_agua" model="product.template">
+            <field name="name">Agua</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_ingredientes"/>
+            <field name="standard_price">60.00</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">True</field>
+            <field name="uom_id" ref="uom.product_uom_gal"/>
+            <field name="uom_po_id" ref="uom.product_uom_gal"/>
+        </record>
+
+        <!-- Estabilizante -->
+        <record id="product_tmpl_estabilizante" model="product.template">
+            <field name="name">Estabilizante</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_ingredientes"/>
+            <field name="standard_price">0.35</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">True</field>
+            <field name="uom_id" ref="uom.product_uom_gram"/>
+            <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        </record>
+
+        <!-- Azúcar -->
+        <record id="product_tmpl_azucar" model="product.template">
+            <field name="name">Azúcar</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_ingredientes"/>
+            <field name="standard_price">32.00</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">True</field>
+            <field name="uom_id" ref="uom.product_uom_lb"/>
+            <field name="uom_po_id" ref="uom.product_uom_lb"/>
+        </record>
+
+        <!-- Dulce de Leche -->
+        <record id="product_tmpl_dulce_leche" model="product.template">
+            <field name="name">Dulce de Leche</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_ingredientes"/>
+            <field name="standard_price">166.72</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">True</field>
+            <field name="uom_id" ref="uom.product_uom_lb"/>
+            <field name="uom_po_id" ref="uom.product_uom_lb"/>
+        </record>
+
+        <!-- Relleno de Fresa -->
+        <record id="product_tmpl_relleno_fresa" model="product.template">
+            <field name="name">Relleno de Fresa</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_ingredientes"/>
+            <field name="standard_price">111.12</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">True</field>
+            <field name="uom_id" ref="uom.product_uom_lb"/>
+            <field name="uom_po_id" ref="uom.product_uom_lb"/>
+        </record>
+
+        <!-- Extracto Vainilla -->
+        <record id="product_tmpl_extracto_vainilla" model="product.template">
+            <field name="name">Extracto Vainilla</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_ingredientes"/>
+            <field name="standard_price">230.10</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">True</field>
+            <field name="uom_id" ref="uom.product_uom_gal"/>
+            <field name="uom_po_id" ref="uom.product_uom_gal"/>
+        </record>
+
+        <!-- Coco -->
+        <record id="product_tmpl_coco" model="product.template">
+            <field name="name">Coco</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_ingredientes"/>
+            <field name="standard_price">60.00</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">True</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+        <!-- Leche de Coco -->
+        <record id="product_tmpl_leche_coco" model="product.template">
+            <field name="name">Leche de Coco</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_ingredientes"/>
+            <field name="standard_price">155.00</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">True</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+        <!-- Sal -->
+        <record id="product_tmpl_sal" model="product.template">
+            <field name="name">Sal</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_ingredientes"/>
+            <field name="standard_price">5.00</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">True</field>
+            <field name="uom_id" ref="uom.product_uom_lb"/>
+            <field name="uom_po_id" ref="uom.product_uom_lb"/>
+        </record>
+
+        <!-- Chinola -->
+        <record id="product_tmpl_chinola" model="product.template">
+            <field name="name">Chinola</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_ingredientes"/>
+            <field name="standard_price">16.67</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">True</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+        <!-- Funda para Helado -->
+        <record id="product_tmpl_funda" model="product.template">
+            <field name="name">Funda para Helado</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_ingredientes"/>
+            <field name="standard_price">2.00</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">True</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+        <!-- Sticker -->
+        <record id="product_tmpl_sticker" model="product.template">
+            <field name="name">Sticker para Helado</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_ingredientes"/>
+            <field name="standard_price">2.00</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">True</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+        <!-- Nutella -->
+        <record id="product_tmpl_nutella" model="product.template">
+            <field name="name">Nutella</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_ingredientes"/>
+            <field name="standard_price">241.36</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">True</field>
+            <field name="uom_id" ref="uom.product_uom_lb"/>
+            <field name="uom_po_id" ref="uom.product_uom_lb"/>
+        </record>
+
+        <!-- Oreo Galleta -->
+        <record id="product_tmpl_oreo" model="product.template">
+            <field name="name">Oreo Galleta</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_ingredientes"/>
+            <field name="standard_price">19.17</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">True</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+        <!-- Fresalina -->
+        <record id="product_tmpl_fresalina" model="product.template">
+            <field name="name">Fresalina</field>
+            <field name="type">product</field>
+            <field name="categ_id" ref="product_category_ingredientes"/>
+            <field name="standard_price">200.00</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">True</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+    </data>
+</odoo>
