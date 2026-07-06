@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="module_category_frutella" model="ir.module.category">
+            <field name="name">Frutella Delight</field>
+            <field name="sequence">10</field>
+        </record>
+
+        <record id="group_frutella_ventas" model="res.groups">
+            <field name="name">Ventas</field>
+            <field name="category_id" ref="module_category_frutella"/>
+        </record>
+
+        <record id="group_frutella_fabrica" model="res.groups">
+            <field name="name">Fábrica</field>
+            <field name="category_id" ref="module_category_frutella"/>
+        </record>
+
+        <record id="group_frutella_admin" model="res.groups">
+            <field name="name">Administrador</field>
+            <field name="category_id" ref="module_category_frutella"/>
+            <field name="implied_ids" eval="[(4, ref('group_frutella_ventas')), (4, ref('group_frutella_fabrica'))]"/>
+        </record>
+
+    </data>
+</odoo>

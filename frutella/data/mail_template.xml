@@ -1,50 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!-- Plantilla: Stock Bajo -->
+    <!-- Plantilla: Stock Bajo (agrupada) -->
     <record id="mail_template_low_stock" model="mail.template">
         <field name="name">Alerta de Stock Bajo</field>
         <field name="model_id" ref="product.model_product_template"/>
-        <field name="subject">Stock Bajo: {{ object.name }}</field>
+        <field name="subject">Stock Bajo: Alerta de Productos</field>
         <field name="body_html"><![CDATA[
-            <div style="font-family: 'Segoe UI', -apple-system, sans-serif; max-width: 500px; margin: 0 auto; background-color: #ffffff;">
-                <!-- Header minimalista -->
+            <div style="font-family: 'Segoe UI', -apple-system, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff;">
                 <div style="background-color: #ff8c00; padding: 30px 20px; text-align: left;">
                     <h2 style="color: white; margin: 0; font-size: 18px; font-weight: 600;">Frutella-Delight</h2>
                 </div>
 
-                <!-- Contenido principal -->
                 <div style="padding: 30px 20px; background-color: #ffffff;">
-                    <h3 style="color: #333; font-size: 16px; font-weight: 600; margin: 0 0 15px 0;">Stock Bajo</h3>
+                    <h3 style="color: #333; font-size: 16px; font-weight: 600; margin: 0 0 15px 0;">Productos con Stock Bajo</h3>
 
                     <p style="color: #666; font-size: 14px; line-height: 1.6; margin: 0 0 25px 0;">
-                        El producto tiene stock por debajo del mínimo.
+                        Los siguientes productos tienen stock por debajo del mínimo:
                     </p>
 
-                    <!-- Información del producto - minimalista -->
-                    <div style="background-color: #fafafa; padding: 20px; border-left: 3px solid #ff8c00;">
-                        <div style="margin-bottom: 15px;">
-                            <p style="color: #999; font-size: 12px; text-transform: uppercase; margin: 0 0 5px 0;">Producto</p>
-                            <p style="color: #333; font-size: 15px; font-weight: 600; margin: 0;">{{ object.name }}</p>
-                        </div>
-
-                        <div style="display: inline-block; width: 48%; margin-right: 4%;">
-                            <p style="color: #999; font-size: 12px; text-transform: uppercase; margin: 0 0 5px 0;">Stock Actual</p>
-                            <p style="color: #ff8c00; font-size: 18px; font-weight: 700; margin: 0;">{{ object.qty_available }}</p>
-                        </div>
-
-                        <div style="display: inline-block; width: 48%;">
-                            <p style="color: #999; font-size: 12px; text-transform: uppercase; margin: 0 0 5px 0;">Stock Mínimo</p>
-                            <p style="color: #333; font-size: 18px; font-weight: 700; margin: 0;">{{ object.min_stock }}</p>
-                        </div>
-                    </div>
+                    <table style="width: 100%; border-collapse: collapse; background-color: #fafafa; border-left: 3px solid #ff8c00;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid #ff8c00;">
+                                <th style="padding: 12px 15px; text-align: left; color: #999; font-size: 12px; text-transform: uppercase;">Producto</th>
+                                <th style="padding: 12px 15px; text-align: center; color: #999; font-size: 12px; text-transform: uppercase;">Stock Actual</th>
+                                <th style="padding: 12px 15px; text-align: center; color: #999; font-size: 12px; text-transform: uppercase;">Stock Mínimo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="env['product.template'].browse(ctx.get('low_stock_product_ids', []))" t-as="p">
+                                <tr style="border-bottom: 1px solid #eee;">
+                                    <td style="padding: 12px 15px; color: #333; font-size: 14px; font-weight: 600;">
+                                        <t t-esc="p.name"/>
+                                    </td>
+                                    <td style="padding: 12px 15px; text-align: center; color: #ff8c00; font-size: 14px; font-weight: 700;">
+                                        <t t-esc="p.qty_available"/>
+                                    </td>
+                                    <td style="padding: 12px 15px; text-align: center; color: #333; font-size: 14px; font-weight: 600;">
+                                        <t t-esc="p.min_stock"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
 
                     <p style="color: #666; font-size: 14px; margin: 25px 0 0 0; line-height: 1.6;">
-                        Reponga este producto a la brevedad.
+                        Reponga estos productos a la brevedad.
                     </p>
                 </div>
 
-                <!-- Footer minimalista -->
                 <div style="background-color: #fafafa; padding: 15px 20px; text-align: center; border-top: 1px solid #eee;">
                     <p style="color: #999; font-size: 12px; margin: 0;">Alerta automática del Sistema de Inventario</p>
                 </div>

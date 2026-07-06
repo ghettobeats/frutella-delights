@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_ms_sale,ms.sale,model_ms_sale,,1,1,1,1
-access_ms_sale_line,ms.sale.line,model_ms_sale_line,,1,1,1,1
+access_ms_sale_admin,ms.sale.admin,model_ms_sale,frutella.group_frutella_admin,1,1,1,1
+access_ms_sale_line_admin,ms.sale.line.admin,model_ms_sale_line,frutella.group_frutella_admin,1,1,1,1
+access_ms_sale_ventas,ms.sale.ventas,model_ms_sale,frutella.group_frutella_ventas,1,1,1,1
+access_ms_sale_line_ventas,ms.sale.line.ventas,model_ms_sale_line,frutella.group_frutella_ventas,1,1,1,1
