@@ -1,5 +1,6 @@
 from odoo import models, fields, api
 
+
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
@@ -16,7 +17,6 @@ class ProductTemplate(models.Model):
             rec.low_stock = rec.qty_available <= rec.min_stock
 
     def action_send_low_stock_alert(self):
-        """Envía correo por cada producto con stock bajo."""
         products = self.search([('low_stock', '=', True)])
         if not products:
             return
@@ -25,10 +25,24 @@ class ProductTemplate(models.Model):
         if not template:
             return
 
-        admin = self.env.ref('base.user_admin')
-        for product in products:
-            template.send_mail(
-                product.id,
-                email_values={'email_to': admin.email},
-                force_send=True,
-            )
+        recipients = self._get_alert_recipients()
+        if not recipients:
+            return
+
+        emails = ','.join(filter(None, recipients.mapped('email')))
+        if not emails:
+            return
+
+        template.with_context(
+            low_stock_product_ids=products.ids,
+        ).send_mail(
+            products[0].id,
+            email_values={'email_to': emails},
+            force_send=True,
+        )
+
+    def _get_alert_recipients(self):
+        group = self.env.ref('frutella.group_frutella_fabrica', raise_if_not_found=False)
+        if group and group.users:
+            return group.users
+        return self.env.ref('base.user_admin')

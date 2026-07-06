@@ -39,10 +39,18 @@
                                     <tr>
                                         <td><span t-field="line.product_id.name"/></td>
                                         <td class="text-right"><span t-field="line.quantity"/></td>
-                                        <td class="text-right"><span t-field="line.price"/></td>
-                                        <td class="text-right"><span t-field="line.cost_unit"/></td>
-                                        <td class="text-right"><span t-field="line.subtotal"/></td>
-                                        <td class="text-right"><span t-field="line.cost"/></td>
+                                        <td class="text-right">
+                                            <span t-field="line.price" t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="line.cost_unit" t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="line.subtotal" t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="line.cost" t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                        </td>
                                     </tr>
                                 </t>
                             </tbody>
@@ -54,19 +62,19 @@
                                     <tr>
                                         <td><strong>Total Venta</strong></td>
                                         <td class="text-right">
-                                            <span t-field="doc.total"/>
+                                            <span t-field="doc.total" t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><strong>Costo Total</strong></td>
                                         <td class="text-right">
-                                            <span t-field="doc.total_cost"/>
+                                            <span t-field="doc.total_cost" t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
                                         </td>
                                     </tr>
                                     <tr t-att-class="'bg-success text-white' if doc.profit >= 0 else 'bg-danger text-white'">
                                         <td><strong>Ganancia / Pérdida</strong></td>
                                         <td class="text-right">
-                                            <strong><span t-field="doc.profit"/></strong>
+                                            <strong><span t-field="doc.profit" t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/></strong>
                                         </td>
                                     </tr>
                                 </table>

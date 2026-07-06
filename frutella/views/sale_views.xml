@@ -48,7 +48,7 @@
                                     <field name="product_id"/>
                                     <field name="quantity"/>
                                     <field name="price" readonly="1"/>
-                                    <field name="cost_unit"/>
+                                    <field name="cost_unit" readonly="parent.state == 'done'"/>
                                     <field name="subtotal" readonly="1"/>
                                     <field name="cost" readonly="1"/>
                                 </tree>

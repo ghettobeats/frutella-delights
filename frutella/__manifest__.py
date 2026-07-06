@@ -6,7 +6,9 @@
     'category': 'Inventory',
     'depends': ['base', 'stock', 'mrp', 'mail'],
     'data': [
+        'security/groups.xml',
         'security/ir.model.access.csv',
+        'data/sequence.xml',
         'data/mail_template.xml',
         'data/cron.xml',
         'data/productos_ingredientes.xml',

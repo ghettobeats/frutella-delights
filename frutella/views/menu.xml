@@ -5,7 +5,8 @@
     <menuitem id="menu_sistema_frutella_root"
               name="Frutella Delight"
               web_icon="frutella,static/description/icon.png"
-              sequence="10"/>
+              sequence="10"
+              groups="group_frutella_admin,group_frutella_ventas,group_frutella_fabrica"/>
 
     <!-- Operaciones -->
     <menuitem id="menu_sistema_frutella_operaciones"
@@ -17,47 +18,55 @@
               name="Órdenes de Fabricación"
               parent="menu_sistema_frutella_operaciones"
               action="mrp.mrp_production_action"
-              sequence="10"/>
+              sequence="10"
+              groups="group_frutella_admin,group_frutella_fabrica"/>
 
     <menuitem id="menu_ms_sale"
               name="Ventas"
               parent="menu_sistema_frutella_operaciones"
               action="action_ms_sale"
-              sequence="20"/>
+              sequence="20"
+              groups="group_frutella_admin,group_frutella_ventas"/>
 
-    <!-- frutella -->
+    <!-- Inventario -->
     <menuitem id="menu_sistema_frutella_stock"
               name="Inventario"
               parent="menu_sistema_frutella_root"
-              sequence="20"/>
+              sequence="20"
+              groups="group_frutella_admin"/>
 
     <menuitem id="menu_ms_product"
               name="Productos"
               parent="menu_sistema_frutella_stock"
               action="action_ms_product"
-              sequence="10"/>
+              sequence="10"
+              groups="group_frutella_admin"/>
 
     <menuitem id="menu_ms_low_stock"
               name="Productos con Stock Bajo"
               parent="menu_sistema_frutella_stock"
               action="action_ms_low_stock"
-              sequence="20"/>
+              sequence="20"
+              groups="group_frutella_admin"/>
     <menuitem id="menu_ms_stock_moves"
           name="Movimientos de Stock"
           parent="menu_sistema_frutella_stock"
           action="action_ms_stock_moves"
-          sequence="30"/>
+          sequence="30"
+          groups="group_frutella_admin"/>
 
     <!-- Configuración -->
     <menuitem id="menu_sistema_frutella_config"
               name="Configuración"
               parent="menu_sistema_frutella_root"
-              sequence="30"/>
+              sequence="30"
+              groups="group_frutella_admin"/>
 
     <menuitem id="menu_ms_bom"
               name="Composición de Helados"
               parent="menu_sistema_frutella_config"
               action="mrp.mrp_bom_form_action"
-              sequence="10"/>
+              sequence="10"
+              groups="group_frutella_admin"/>
 
 </odoo>
