@@ -4,6 +4,25 @@ from odoo import models, fields, api
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
+    uom_id_simple = fields.Many2one(
+        'uom.uom', string='Unidad de Medida',
+        related='uom_id', readonly=False,
+        help="Unidad de medida para este producto")
+    uom_po_id_simple = fields.Many2one(
+        'uom.uom', string='Unidad de Medida para Compras',
+        related='uom_po_id', readonly=False,
+        help="Unidad de medida para compras de este producto")
+
+    has_uom_group = fields.Boolean(
+        string='Tiene grupo UOM',
+        compute='_compute_has_uom_group')
+
+    @api.depends_context('uid')
+    def _compute_has_uom_group(self):
+        has_group = self.env.user.has_group('stock.group_uom')
+        for rec in self:
+            rec.has_uom_group = has_group
+
     min_stock = fields.Float(string='Stock Mínimo', digits=(16, 2), default=0.0)
     low_stock = fields.Boolean(
         string='Stock Bajo',
